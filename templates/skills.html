@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ name }} | Skills{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/skills.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="page-intro surface-card reveal is-visible">
+        <p class="eyebrow">Skills & Tools</p>
+        <h1 class="page-title">Tools and technologies I use to build reliable projects.</h1>
+        <p class="page-summary">My skill set combines programming fundamentals, machine learning libraries, data tools, and practical development habits that help turn ideas into working solutions.</p>
+    </section>
+
+    <section class="content-section reveal">
+        <div class="section-heading">
+            <p class="eyebrow">Skill Groups</p>
+            <h2>The core stack behind my work.</h2>
+        </div>
+        <div class="skills-grid">
+            <article class="skill-card">
+                <h3>Languages</h3>
+                <div class="chip-list">
+                    {% for skill in skills.languages %}
+                    <span><i class="{{ skill.icon }}"></i>{{ skill.name }}</span>
+                    {% endfor %}
+                </div>
+            </article>
+            <article class="skill-card">
+                <h3>Frameworks & ML</h3>
+                <div class="chip-list">
+                    {% for skill in skills.frameworks %}
+                    <span><i class="{{ skill.icon }}"></i>{{ skill.name }}</span>
+                    {% endfor %}
+                </div>
+            </article>
+            <article class="skill-card">
+                <h3>Tools</h3>
+                <div class="chip-list">
+                    {% for skill in skills.tools %}
+                    <span><i class="{{ skill.icon }}"></i>{{ skill.name }}</span>
+                    {% endfor %}
+                </div>
+            </article>
+            <article class="skill-card">
+                <h3>Professional Strengths</h3>
+                <div class="chip-list">
+                    {% for skill in skills.soft_skills %}
+                    <span><i class="{{ skill.icon }}"></i>{{ skill.name }}</span>
+                    {% endfor %}
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="content-section reveal">
+        <div class="section-heading">
+            <p class="eyebrow">Projects Through Skills</p>
+            <h2>How these skills appear in real projects.</h2>
+        </div>
+        <div class="project-grid">
+            {% for project in projects %}
+            <article class="project-card">
+                <div class="project-topline">
+                    <p>{{ project.duration }}</p>
+                    <span>{{ project.subtitle }}</span>
+                </div>
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.desc }}</p>
+                <ul class="project-highlights">
+                    {% for highlight in project.highlights %}
+                    <li>{{ highlight }}</li>
+                    {% endfor %}
+                </ul>
+                <p class="tech-stack">{{ project.tech }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/skills.js' %}"></script>
+{% endblock %}

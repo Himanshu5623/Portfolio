@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ name }} | Projects{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="page-intro surface-card reveal is-visible">
+        <p class="eyebrow">Projects</p>
+        <h1 class="page-title">A selection of projects across AI, analytics, and intelligent systems.</h1>
+        <p class="page-summary">Each project reflects how I approach problem solving from data preparation and modeling to interfaces that make the final solution useful and understandable.</p>
+    </section>
+
+    <section class="content-section reveal">
+        <div class="project-showcase">
+            {% for project in projects %}
+            <article class="featured-project reveal">
+                <div class="project-visual theme-{{ project.theme }}">
+                    <div class="visual-layer">
+                        <p class="visual-tag">{{ project.cover_tag }}</p>
+                        <h2>{{ project.title }}</h2>
+                        <p class="visual-kicker">{{ project.cover_kicker }}</p>
+                    </div>
+                    <div class="visual-orbit orbit-one"></div>
+                    <div class="visual-orbit orbit-two"></div>
+                </div>
+
+                <div class="project-card project-content">
+                    <div class="project-topline">
+                        <p>{{ project.duration }}</p>
+                        <span>{{ project.subtitle }}</span>
+                    </div>
+                    <h3 class="project-heading">{{ project.title }}</h3>
+                    <p class="project-impact">{{ project.impact }}</p>
+                    <p class="project-summary">{{ project.desc }}</p>
+                    <ul class="project-highlights">
+                        {% for highlight in project.highlights %}
+                        <li>{{ highlight }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="project-footer">
+                        <p class="tech-stack">{{ project.tech }}</p>
+                        <div class="project-actions">
+                            <a href="{{ project.github_url }}" target="_blank" rel="noreferrer" class="button primary small-button">
+                                View GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/projects.js' %}"></script>
+{% endblock %}

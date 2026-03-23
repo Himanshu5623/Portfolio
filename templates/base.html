@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ name }} | Portfolio{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-shell">
+        <nav class="site-nav">
+            <a href="{% url 'home' %}" class="logo">Himanshu Agnihotri</a>
+            <div class="nav-links">
+                <a href="{% url 'home' %}" class="{% if page == 'home' %}active{% endif %}">Home</a>
+                <a href="{% url 'about' %}" class="{% if page == 'about' %}active{% endif %}">About</a>
+                <a href="{% url 'projects' %}" class="{% if page == 'projects' %}active{% endif %}">Projects</a>
+                <a href="{% url 'skills' %}" class="{% if page == 'skills' %}active{% endif %}">Skills</a>
+            </div>
+        </nav>
+
+        <div class="page-transition">
+            {% block content %}{% endblock %}
+        </div>
+
+        <footer class="site-footer">
+            <div class="footer-links">
+                <a href="mailto:{{ email }}">{{ email }}</a>
+                <a href="{{ github }}" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="{{ linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{% static 'js/base.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

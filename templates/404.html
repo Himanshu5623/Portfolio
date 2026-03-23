@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Page Not Found{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/not-found.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="not-found-card surface-card reveal is-visible">
+        <p class="eyebrow">404 Error</p>
+        <h1 class="page-title">This page does not exist or may have been moved.</h1>
+        <p class="page-summary">The link you opened is not available right now. You can head back home, review projects, or explore the rest of the portfolio instead.</p>
+        <div class="hero-actions">
+            <a href="{% url 'home' %}" class="button primary">Go Home</a>
+            <a href="{% url 'projects' %}" class="button secondary">View Projects</a>
+            <a href="{% url 'about' %}" class="button secondary">Open About</a>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/not-found.js' %}"></script>
+{% endblock %}

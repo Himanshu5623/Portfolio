@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ name }} | Home{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="landing-hero">
+        <div class="hero-copy surface-card reveal is-visible">
+            <div class="hero-intro">
+                <div class="profile-frame">
+                    <div class="profile-ring">
+                        <img src="{% static 'assets/profile_photo.jpeg' %}" alt="{{ name }} profile photo" class="profile-image">
+                    </div>
+                </div>
+                <div class="hero-intro-copy">
+                    <p class="eyebrow">Hello, I am</p>
+                    <h1>{{ name }}</h1>
+                </div>
+            </div>
+            <p class="hero-title">{{ hero_title }}</p>
+            <p class="hero-summary">{{ hero_summary }}</p>
+
+            <div class="hero-actions">
+                <a href="{% url 'about' %}" class="button primary">Learn More About Me</a>
+                <a href="{% url 'skills' %}" class="button secondary">See My Skills</a>
+                <a href="{% static 'assets/Himanshu_Agnihotri_CV.pdf' %}?v=20260323-1736" target="_blank" rel="noreferrer" class="button secondary">View Resume</a>
+            </div>
+
+            <div class="contact-strip">
+                <span><i class="fas fa-location-dot"></i><a href="https://www.google.com/maps/search/?api=1&query=Hathras%2C%20Uttar%20Pradesh%2C%20India" target="_blank" rel="noreferrer">{{ location }}</a></span>
+                <span><i class="fas fa-envelope"></i><a href="mailto:{{ email }}">{{ email }}</a></span>
+                <span><i class="fas fa-phone"></i><a href="tel:{{ phone }}">{{ phone }}</a></span>
+                <span><a href="{{ github }}" target="_blank" rel="noreferrer">GitHub <i class="fab fa-github"></i></a></span>
+                <span><a href="{{ linkedin }}" target="_blank" rel="noreferrer">LinkedIn <i class="fab fa-linkedin"></i></a></span>
+            </div>
+        </div>
+
+        <aside class="hero-feature surface-card reveal">
+            <p class="eyebrow">What I build</p>
+            <div class="mini-grid">
+                {% for area in focus_areas %}
+                <article class="mini-card">
+                    <p>{{ area }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </aside>
+    </section>
+
+    <section class="stats-grid reveal">
+        {% for stat in stats %}
+        <article class="stat-card">
+            <strong>{{ stat.value }}</strong>
+            <span>{{ stat.label }}</span>
+        </article>
+        {% endfor %}
+    </section>
+
+    <section class="cta-band reveal">
+        <article class="surface-card cta-card">
+            <p class="eyebrow">About Page</p>
+            <h2>Education, certifications, and project journey.</h2>
+            <a href="{% url 'about' %}" class="text-link">Open About Page</a>
+        </article>
+        <article class="surface-card cta-card">
+            <p class="eyebrow">Projects Page</p>
+            <h2>See detailed case studies and project highlights.</h2>
+            <a href="{% url 'projects' %}" class="text-link">Open Projects Page</a>
+        </article>
+        <article class="surface-card cta-card">
+            <p class="eyebrow">Skills Page</p>
+            <h2>Languages, frameworks, tools, and strengths.</h2>
+            <a href="{% url 'skills' %}" class="text-link">Open Skills Page</a>
+        </article>
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
