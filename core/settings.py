@@ -28,6 +28,9 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-b0=6@s$8=_awg!vrr8z
 DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [host for host in os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost').split(',') if host]
+vercel_url = os.getenv('VERCEL_URL')
+if vercel_url:
+    ALLOWED_HOSTS.extend([vercel_url, f'.{vercel_url}', '.vercel.app'])
 
 
 # Application definition
