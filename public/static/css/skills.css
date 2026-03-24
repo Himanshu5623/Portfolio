@@ -1,0 +1,41 @@
+.skill-card {
+    min-height: 100%;
+}
+
+.skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.skill-card h3 {
+    margin-bottom: 0.9rem;
+}
+
+.skill-card .chip-list span i {
+    color: var(--accent-dark);
+}
+
+@media (max-width: 900px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .skill-card {
+        padding: 1.2rem;
+    }
+
+    .skill-card h3 {
+        margin-bottom: 0.75rem;
+    }
+
+    .skill-card .chip-list {
+        gap: 0.55rem;
+    }
+
+    .skill-card .chip-list span {
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 0.9rem;
+    }
+}
