@@ -126,6 +126,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-if importlib.util.find_spec('whitenoise') is not None:
+IS_VERCEL = os.getenv('VERCEL') == '1'
+
+if importlib.util.find_spec('whitenoise') is not None and not IS_VERCEL:
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
